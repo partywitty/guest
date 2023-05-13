@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">party-witty_guest</string>
+    <string name="facebook_app_id">837198340833880</string>
+    <string name="fb_login_protocol_scheme">fb837198340833880</string>
+    <string name="facebook_client_token">dc046528606ddf430f60d5d2a35abd18</string>
+</resources>
