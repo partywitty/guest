@@ -4,17 +4,13 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:partywitty_guest/Api_service/API_link.dart';
-import 'package:partywitty_guest/Api_service/login_api.dart';
 import 'package:partywitty_guest/Utils/sharepref.dart';
 import 'package:get/get.dart';
 import 'package:scratcher/widgets.dart';
 import '../Screen/dashBoardScreen.dart';
 import '../Utils/Styles.dart';
-import '../Utils/commonStyles.dart';
 import 'package:http/http.dart' as http;
-import 'forgetPassword.dart';
 import 'login_page.dart';
 
 

@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,7 +11,6 @@ import '../Screen/dashBoardScreen.dart';
 import '../Utils/Styles.dart';
 import '../Utils/commonStyles.dart';
 import 'package:http/http.dart' as http;
-
 import '../Utils/sharepref.dart';
 
 class SignUp extends StatefulWidget {
