@@ -33,6 +33,7 @@ import '../guest_wallets.dart';
 import '../jump_start_deal.dart';
 import '../privateParty.dart';
 import '../restaurant_deals.dart';
+import '../review.dart';
 import 'clubAllDeals.dart';
 
 class HomePage extends StatefulWidget {
@@ -43,6 +44,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final double _height = Get.height, _width = Get.width;
   ScrollController scrollController=ScrollController();
   void scrollup(){
     scrollController.animateTo(scrollController.offset-200, duration: const Duration(milliseconds: 500),
@@ -1439,6 +1441,82 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  Future<void> logOutDialog(BuildContext context) {
+    return showDialog(context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            backgroundColor: Colors.transparent,
+            contentPadding: const EdgeInsets.all(0),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            content: StatefulBuilder(builder: (context, StateSetter setState) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    width: _width*0.65,
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    decoration: BoxDecoration(
+                      color: bottomBarColor,
+                      borderRadius: BorderRadius.circular(4.0),
+                    ),
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 20.0),
+                        Image.asset("assest/logo.png",fit: BoxFit.fill,height: 50),
+                        const SizedBox(height: 10.0),
+                        Text("Do you want sign out ?",style: GoogleFonts.poppins(textStyle: bigTitle),textAlign: TextAlign.center),
+                        const SizedBox(height: 20.0),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            GestureDetector(
+                              onTap: ()async{
+                                final getUserId=GetUserDetail();
+                                await getUserId.remove('id');
+                                Get.offAll(() => const Login_page());
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5.0),
+                                alignment: Alignment.center,
+                                decoration: const BoxDecoration(
+                                  color: appColor,
+                                  borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                ),
+                                child: Text('Yes', style: GoogleFonts.poppins(textStyle: buttonText)),
+                              ),
+                            ),
+                            const SizedBox(width: 20.0),
+                            GestureDetector(
+                              onTap: (){
+                                Navigator.pop(context);
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5.0),
+                                alignment: Alignment.center,
+                                decoration: const BoxDecoration(
+                                  color: Colors.grey,
+                                  borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                ),
+                                child: Text('No', style: GoogleFonts.poppins(textStyle: buttonText)),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 20.0),
+                      ],
+                    ),
+                  ),
+                ],
+              );
+            }),
+          );
+        }
+    );
+  }
+
   getDrawer(context){
     return SizedBox(
       width: 320,
@@ -1594,7 +1672,7 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.white,
                       ),
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const gettingReady(),));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const reviewScreen(),));
                       },
                     ),
                   ),
@@ -1724,9 +1802,10 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(height: 10.0),
                   TextButton(
                       onPressed: ()async{
-                        final getUserId=GetUserDetail();
-                        await getUserId.remove('id');
-                        Get.to(() => const Login_page());
+                        logOutDialog(context);
+                        // final getUserId=GetUserDetail();
+                        // await getUserId.remove('id');
+                        // Get.to(() => const Login_page());
                       },
                       child: Text("Sign Out",
                         style: GoogleFonts.poppins(fontWeight: FontWeight.w600,fontSize: 16,color: Colors.grey),

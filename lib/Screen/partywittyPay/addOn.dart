@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:popup_menu/popup_menu.dart';
+// import 'package:popup_menu/popup_menu.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import '../../Utils/Styles.dart';
 
@@ -13,57 +13,57 @@ class AddOnMeal extends StatefulWidget {
 }
 
 class _AddOnMealState extends State<AddOnMeal> {
-  PopupMenu? menu;
-  GlobalKey btnKey = GlobalKey();
-  GlobalKey btnKey2 = GlobalKey();
-  @override
-  void initState() {
-    super.initState();
-    menu = PopupMenu(items: [
-      // MenuItem(title: 'Copy', image: Image.asset('assets/copy.png')),
-      // MenuItem(title: 'Home', image: Icon(Icons.home, color: Colors.white,)),
-      MenuItem(
-          title: 'Mail',
-          image: Icon(
-            Icons.mail,
-            color: Colors.white,
-          )),
-      MenuItem(
-          title: 'Power',
-          image: Icon(
-            Icons.power,
-            color: Colors.white,
-          )),
-      MenuItem(
-          title: 'Setting',
-          image: Icon(
-            Icons.settings,
-            color: Colors.white,
-          )),
-      MenuItem(
-          title: 'PopupMenu',
-          image: Icon(
-            Icons.menu,
-            color: Colors.white,
-          ))
-    ], onClickMenu: onClickMenu, onDismiss: onDismiss, maxColumn: 1);
-  }
-
-  void stateChanged(bool isShow) {
-    print('menu is ${isShow ? 'showing' : 'closed'}');
-  }
-
-  void onClickMenu(MenuItemProvider item) {
-    print('Click menu -> ${item.menuTitle}');
-  }
-
-  void onDismiss() {
-    print('Menu is dismiss');
-  }
+  // PopupMenu? menu;
+  // GlobalKey btnKey = GlobalKey();
+  // GlobalKey btnKey2 = GlobalKey();
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   menu = PopupMenu(items: [
+  //     // MenuItem(title: 'Copy', image: Image.asset('assets/copy.png')),
+  //     // MenuItem(title: 'Home', image: Icon(Icons.home, color: Colors.white,)),
+  //     MenuItem(
+  //         title: 'Mail',
+  //         image: Icon(
+  //           Icons.mail,
+  //           color: Colors.white,
+  //         )),
+  //     MenuItem(
+  //         title: 'Power',
+  //         image: Icon(
+  //           Icons.power,
+  //           color: Colors.white,
+  //         )),
+  //     MenuItem(
+  //         title: 'Setting',
+  //         image: Icon(
+  //           Icons.settings,
+  //           color: Colors.white,
+  //         )),
+  //     MenuItem(
+  //         title: 'PopupMenu',
+  //         image: Icon(
+  //           Icons.menu,
+  //           color: Colors.white,
+  //         ))
+  //   ], onClickMenu: onClickMenu, onDismiss: onDismiss, maxColumn: 1);
+  // }
+  //
+  // void stateChanged(bool isShow) {
+  //   print('menu is ${isShow ? 'showing' : 'closed'}');
+  // }
+  //
+  // void onClickMenu(MenuItemProvider item) {
+  //   print('Click menu -> ${item.menuTitle}');
+  // }
+  //
+  // void onDismiss() {
+  //   print('Menu is dismiss');
+  // }
 
   @override
   Widget build(BuildContext context) {
-    PopupMenu.context = context;
+   // PopupMenu.context = context;
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -189,9 +189,9 @@ class _AddOnMealState extends State<AddOnMeal> {
                     Text(" (How to Avail) ",
                         style: GoogleFonts.poppins(textStyle: textHint)),
                     InkWell(
-                      key: btnKey,
+                      // key: btnKey,
                       onTap: (){
-                        maxColumn();
+                        //maxColumn();
                       },
                         child: const Icon(Icons.info_outline, color: Colors.blue, size: 24)),
                   ],
@@ -219,24 +219,24 @@ class _AddOnMealState extends State<AddOnMeal> {
     );
   }
 
-  void maxColumn() {
-    PopupMenu menu = PopupMenu(
-       backgroundColor: Colors.grey,
-      // lineColor: Colors.tealAccent,
-        maxColumn: 1,
-        items: [
-          MenuItem(
-              title: 'this amount will we saved in the wallet for redemption. T&C',
-            textStyle: textHint,
-            userInfo:  Container(
-              color: Colors.white,
-            )
-          ),
-        ],
-        onClickMenu: onClickMenu,
-        stateChanged: stateChanged,
-        onDismiss: onDismiss);
-    menu.show(widgetKey: btnKey);
-  }
+  // void maxColumn() {
+  //   PopupMenu menu = PopupMenu(
+  //      backgroundColor: Colors.grey,
+  //     // lineColor: Colors.tealAccent,
+  //       maxColumn: 1,
+  //       items: [
+  //         MenuItem(
+  //             title: 'this amount will we saved in the wallet for redemption. T&C',
+  //           textStyle: textHint,
+  //           userInfo:  Container(
+  //             color: Colors.white,
+  //           )
+  //         ),
+  //       ],
+  //       onClickMenu: onClickMenu,
+  //       stateChanged: stateChanged,
+  //       onDismiss: onDismiss);
+  //   menu.show(widgetKey: btnKey);
+  // }
 
 }

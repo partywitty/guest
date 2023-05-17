@@ -1,21 +1,20 @@
 
-
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:partywitty_guest/Screen/Scan/congrats.dart';
+import 'package:partywitty_guest/Screen/Scan/readyClaim.dart';
 import '../../Utils/Styles.dart';
 
-class qrFirstScreen extends StatefulWidget {
-  const qrFirstScreen({Key? key}) : super(key: key);
+class congratsScreen extends StatefulWidget {
+  const congratsScreen({Key? key}) : super(key: key);
 
   @override
-  State<qrFirstScreen> createState() => _qrFirstScreenState();
+  State<congratsScreen> createState() => _congratsScreenState();
 }
 
-class _qrFirstScreenState extends State<qrFirstScreen> {
+class _congratsScreenState extends State<congratsScreen> {
   final double _height = Get.height, _width = Get.width;
   @override
   Widget build(BuildContext context) {
@@ -27,9 +26,10 @@ class _qrFirstScreenState extends State<qrFirstScreen> {
       body: Column(
         children: [
           const Spacer(),
-          Image.asset('assest/cheer.png',fit: BoxFit.fill,height: _height*0.20,),
+          Image.asset('assest/wining_img.png',fit: BoxFit.fill,height: _height*0.30,),
           Container(
-            height: _height*0.60,
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            height: _height*0.55,
             width: _width,
             decoration: const BoxDecoration(
               color: bottomBarColor,
@@ -40,14 +40,16 @@ class _qrFirstScreenState extends State<qrFirstScreen> {
             child: Column(
                 children: [
                   const SizedBox(height: 20.0),
-                  const Text("You are entered",style: bigTitle),
+                  Text("Congrats!",style: GoogleFonts.pottaOne(fontSize: 30,color: Colors.white,fontWeight: FontWeight.w400)),
+                  const SizedBox(height: 10.0),
+                  const Text("you get 1 beer for your first entry in club",style: bigTitle),
                   const SizedBox(height: 20.0),
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 20),
                     padding: const EdgeInsets.symmetric(vertical: 10.0,horizontal: 20.0),
                     decoration: BoxDecoration(
-                      border: Border.all(color: appColor),
-                      borderRadius: BorderRadius.circular(5.0)
+                        border: Border.all(color: appColor),
+                        borderRadius: BorderRadius.circular(5.0)
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,7 +85,7 @@ class _qrFirstScreenState extends State<qrFirstScreen> {
                     children: [
                       GestureDetector(
                         onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => const congratsScreen()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const readyClaimScreen()));
                         },
                         child: Container(
                           padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5.0),
@@ -92,7 +94,7 @@ class _qrFirstScreenState extends State<qrFirstScreen> {
                             color: appColor,
                             borderRadius: BorderRadius.all(Radius.circular(5.0)),
                           ),
-                          child: Text('Inform to Manager', style: GoogleFonts.poppins(textStyle: buttonText)),
+                          child: Text('Claim', style: GoogleFonts.poppins(textStyle: buttonText)),
                         ),
                       ),
                       const SizedBox(width: 20.0),

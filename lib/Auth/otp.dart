@@ -1,10 +1,11 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/otp_field_style.dart';
 import 'package:otp_text_field/style.dart';
 import '../Api_service/otp_api.dart';
-import '../Utils/Styles.dart';
 
 class Otp_page extends StatefulWidget {
   String Ids;
@@ -25,7 +26,6 @@ class _Otp_pageState extends State<Otp_page> {
 
   OtpFieldController? otpController;
   var otppin;
-  double _opacity = 0.0;
   @override
   Widget build(BuildContext context) {
 
@@ -33,7 +33,7 @@ class _Otp_pageState extends State<Otp_page> {
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SingleChildScrollView(
-        child: Container(
+        child: SizedBox(
           width: width,
           height: height,
           child: Stack(
@@ -48,12 +48,12 @@ class _Otp_pageState extends State<Otp_page> {
               Positioned(
                 child: Padding(
                   padding: const EdgeInsets.only(top: 40, left: 30),
-                  child: Container(
+                  child: SizedBox(
                     width: 40,
                     height: 40,
                     child: IconButton(
                       color: Colors.white,
-                      icon: Icon(Icons.arrow_back_ios),
+                      icon: const Icon(Icons.arrow_back_ios),
                       onPressed: () {
                         Navigator.pop(context);
                       },
@@ -64,7 +64,7 @@ class _Otp_pageState extends State<Otp_page> {
               Positioned(
                   bottom: 0,
                   child: Padding(
-                    padding: EdgeInsets.only(top: 0),
+                    padding: const EdgeInsets.only(top: 0),
                     child: Container(
                       width: width,
                       // height: height,
@@ -104,58 +104,54 @@ class _Otp_pageState extends State<Otp_page> {
                                     fieldWidth: 50,
                                     otpFieldStyle: OtpFieldStyle(
                                       disabledBorderColor: Colors.red,
-                                      enabledBorderColor:Color(0xFF434445),
-                                      backgroundColor: Color(0xFF434445),
+                                      enabledBorderColor:const Color(0xFF434445),
+                                      backgroundColor: const Color(0xFF434445),
                                     ),
                                     fieldStyle: FieldStyle.box,
                                     outlineBorderRadius: 30,
                                     style:GoogleFonts.poppins(fontWeight: FontWeight.w400, fontSize: 22, color: Colors.white),
-                                    onChanged: (pin) {
-                                      print("Changed: " + pin);
-                                    },
+                                    onChanged: (pin) {},
                                     onCompleted: (pin) {
                                       setState((){
                                         otppin=pin;
                                       });
-                                      print("Completed: " + pin);
                                     }),
                               ),
                             ),
                             const SizedBox(height: 50),
                             Center(
-                              child: Container(
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      // otpController!.setFocus(otppin);
-                                      otpApi().otp(otp: otppin.toString(),context: context);
-                                      // Navigator.pushNamed(context,'/reward_page').then((value){
-                                      //   Get.off(Reward_page());
-                                      // });
-                                      // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Bottom_navigation(),),(route)=> false);
-                                      // scratchDialog(context);
-                                    },
-                                    child: Container(
-                                      width: 140,
-                                      height: 50.0,
-                                      decoration: const BoxDecoration(
-                                        gradient: LinearGradient(
-                                          begin: FractionalOffset(0.1, 0.1),
-                                          end: FractionalOffset(0.7, 0.1),
-                                          colors: [
-                                            Color(0xFFFE262F),
-                                            Color(0xFFFD2F71),
-                                          ],
-                                        ),
-                                        borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          'Submit',
-                                          style: GoogleFonts.poppins(fontWeight: FontWeight.w600, fontSize: 14, color: Colors.white),
-                                        ),
-                                      ),
+                              child: GestureDetector(
+                                onTap: () {
+                                  // otpController!.setFocus(otppin);
+                                  otpApi().otp(otp: otppin.toString(),context: context);
+                                  // Navigator.pushNamed(context,'/reward_page').then((value){
+                                  //   Get.off(Reward_page());
+                                  // });
+                                  // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => Bottom_navigation(),),(route)=> false);
+                                  // scratchDialog(context);
+                                },
+                                child: Container(
+                                  width: 140,
+                                  height: 50.0,
+                                  decoration: const BoxDecoration(
+                                    gradient: LinearGradient(
+                                      begin: FractionalOffset(0.1, 0.1),
+                                      end: FractionalOffset(0.7, 0.1),
+                                      colors: [
+                                        Color(0xFFFE262F),
+                                        Color(0xFFFD2F71),
+                                      ],
                                     ),
-                                  )),
+                                    borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      'Submit',
+                                      style: GoogleFonts.poppins(fontWeight: FontWeight.w600, fontSize: 14, color: Colors.white),
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ),
                             const SizedBox(height: 30),
                           ],
